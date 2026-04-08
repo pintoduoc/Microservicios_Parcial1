@@ -68,6 +68,7 @@ public class ReporteIncendioController {
         return reporteIncendioService.save(reporte);
     }
 
+    //Eliminar reporte por id. Se debe enviar el id del reporte a eliminar en la URL. (Ejemplo: /api/reporte-incendio/1)
     @DeleteMapping("/{id}")
     public void deleteReporteIncendio(@PathVariable Long id) {
         reporteIncendioService.deleteById(id);
