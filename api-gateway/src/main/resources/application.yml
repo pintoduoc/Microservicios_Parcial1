@@ -8,14 +8,14 @@ spring:
         - id: reporte-incendio
           uri: http://localhost:8081
           predicates:
-            - Path=/api/reporte-incendio/,/api/reporte-incendio/**
+            - Path=/api/reporte-incendio,/api/reporte-incendio/**
 
         - id: user-service
           uri: http://localhost:8082
           predicates:
-            - Path=/api/users/**
+            - Path=/api/usuario,/api/usuario/**
 
-        - id: order-service
+        - id: alert-service
           uri: http://localhost:8083
           predicates:
-            - Path=/api/orders/**
+            - Path=/api/alerta-emergencia,/api/alerta-emergencia/**
