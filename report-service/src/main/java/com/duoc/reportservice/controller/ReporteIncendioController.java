@@ -67,4 +67,9 @@ public class ReporteIncendioController {
         reporte.setId(id);
         return reporteIncendioService.save(reporte);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteReporteIncendio(@PathVariable Long id) {
+        reporteIncendioService.deleteById(id);
+    }
 }
