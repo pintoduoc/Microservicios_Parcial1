@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  bd:
+    image: mysql:8.0
+    container_name: bd
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes" # Coincide con tu application.properties actual
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d # Ejecuta el script SQL al iniciar
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - report-service
+      - user-service
+      - alert-service
+
+  report-service:
+    build: ./report-service
+    container_name: report-service
+    depends_on:
+      - bd
+
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    depends_on:
+      - bd
+
+  alert-service:
+    build: ./alert-service
+    container_name: alert-service
+    depends_on:
+      - bd
+      - report-service
+
+volumes:
+  mysql_data:
