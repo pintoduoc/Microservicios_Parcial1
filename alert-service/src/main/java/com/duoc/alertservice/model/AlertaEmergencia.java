@@ -18,7 +18,7 @@ public class AlertaEmergencia {
     private Long id;
     private Long idReporte;
     private String mensajeAlerta;
-    private String fechaEmision;
+    private LocalDateTime fechaEmision;
     @Enumerated(EnumType.STRING)
     private NivelRiesgo nivelRiesgo;
     public enum NivelRiesgo {

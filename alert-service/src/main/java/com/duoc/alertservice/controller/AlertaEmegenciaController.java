@@ -33,20 +33,19 @@ public class AlertaEmegenciaController {
     }
 
     //Crear alerta de emergencia. Se debe enviar la alerta en el cuerpo de la solicitud.
-    //El cuerpo puede contener todos los campos de la alerta, excepto el id.
-    //Los campos de la alerta a ingresar son: idReporte (Long), mensajeAlerta (String), fechaEmision (String) y nivelRiesgo (PREVENTIVO/EVACUACION/CATASTROFE).
+    //El cuerpo puede contener todos los campos de la alerta, excepto el id y la fechaEmision..
+    //Los campos de la alerta a ingresar son: idReporte (Long), mensajeAlerta (String) y nivelRiesgo (PREVENTIVO/EVACUACION/CATASTROFE).
     //Ejemplo de cuerpo de solicitud:
     /*
     {
         "idReporte": 1,
         "mensajeAlerta": "Esta es una alerta de emergencia",
-        "fechaEmision": "2023-01-01, 12:02",
         "nivelRiesgo": "CATASTROFE"
     }
     */
     @PostMapping
     public AlertaEmergencia createAlertaEmergencia(@RequestBody AlertaEmergencia alerta) {
-        return alertaEmergenciaService.save(alerta);
+        return alertaEmergenciaService.generarAlertaDesdeReporte(alerta.getIdReporte());
     }
 
     //Actualizar alerta de emergencia por id. Se debe enviar el id de la alerta a actualizar en la URL y la alerta actualizada en el cuerpo de la solicitud (sin id en el cuerpo).
