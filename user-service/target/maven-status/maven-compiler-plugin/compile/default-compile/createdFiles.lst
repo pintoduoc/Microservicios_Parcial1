@@ -1,0 +1,6 @@
+com\duoc\userservice\service\UsuarioService.class
+com\duoc\userservice\UserServiceApplication.class
+com\duoc\userservice\model\Usuario$Rol.class
+com\duoc\userservice\repository\UsuarioRepository.class
+com\duoc\userservice\controller\UsuarioController.class
+com\duoc\userservice\model\Usuario.class
