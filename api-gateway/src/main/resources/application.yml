@@ -14,6 +14,7 @@ spring:
           uri: http://user-service:8082
           predicates:
             - Path=/api/usuario,/api/usuario/**
+            - Path=/api/brigada,/api/brigada/**
 
         - id: alert-service
           uri: http://alert-service:8083

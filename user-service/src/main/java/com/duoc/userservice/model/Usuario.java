@@ -23,7 +23,7 @@ public class Usuario {
     @NotNull
     private String nombreCompleto;
 
-    @NotNull
+    @Nullable
     private String contacto;
 
     @NotNull
@@ -38,6 +38,6 @@ public class Usuario {
 
     @Nullable
     @ManyToOne
-    @JoinColumn(name = "brigada_id", nullable = true, referencedColumnName = "id")
+    @JoinColumn(name = "brigada_id", referencedColumnName = "id")
     private Brigada brigada;
 }
