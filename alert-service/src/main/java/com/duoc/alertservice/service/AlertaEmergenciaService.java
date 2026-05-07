@@ -32,6 +32,16 @@ public class AlertaEmergenciaService {
         return alertaEmergenciaRepository.findByNivelRiesgo(nivelRiesgo);
     }
 
+    public List<AlertaEmergencia> findByFechaEmisionRango(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+        if (fechaInicio == null || fechaFin == null) {
+            throw new IllegalArgumentException("Las fechas de inicio y fin son obligatorias");
+        }
+        if (fechaInicio.isAfter(fechaFin)) {
+            throw new IllegalArgumentException("La fecha de inicio no puede ser posterior a la fecha de fin");
+        }
+        return alertaEmergenciaRepository.findByFechaEmisionBetween(fechaInicio, fechaFin);
+    }
+
     public AlertaEmergencia save(AlertaEmergencia alerta) {
         return alertaEmergenciaRepository.save(alerta);
     }
